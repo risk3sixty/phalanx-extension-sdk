@@ -3,8 +3,13 @@
   "version": "0.0.1",
   "description": "Phalanx automation extension SDK",
   "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Risk3sixty-Labs/phalanx-extension-sdk"
+  },
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "prepublish": "npm run build"
   },
   "author": "Lance Whatley",
   "license": "MIT",
