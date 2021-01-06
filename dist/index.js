@@ -22,7 +22,10 @@ exports.default = {
         const form = new form_data_1.default();
         form.append(`file`, binaryData, name);
         const { data } = await axios_1.default.post(this.uploadEndpoint, form, {
-            headers: form.getHeaders(),
+            headers: {
+                ...form.getHeaders(),
+                ['x-r3s-key']: this.phalanxApiKey,
+            },
         });
         return data;
     },
