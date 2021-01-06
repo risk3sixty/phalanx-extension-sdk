@@ -1,0 +1,6 @@
+# Phalanx Automation Extension SDK
+
+A library that can be used in Phalanx automations/extensions
+to provide utilities to access common information available
+in any automation execution and to send data ad hoc back to Phalanx
+as needed.
