@@ -20,6 +20,7 @@ export default {
     name?: string
   ): Promise<StringMap> {
     assert(this.uploadEndpoint, 'upload endpoint is not available')
+    assert(this.phalanxApiKey, 'Phalanx API key is not available')
 
     const form = new FormData()
     form.append(`file`, binaryData, name)
