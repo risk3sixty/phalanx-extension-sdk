@@ -1,6 +1,6 @@
 {
   "name": "@risk3sixty/extension-sdk",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Phalanx automation extension SDK",
   "main": "dist/index.js",
   "repository": {
