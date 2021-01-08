@@ -8,7 +8,7 @@
     "url": "https://github.com/Risk3sixty-Labs/phalanx-extension-sdk"
   },
   "bin": {
-    "phalanxSdkTestServer": "./dist/bin/testServer"
+    "phalanxSdkTestServer": "./dist/bin/testServer.js"
   },
   "scripts": {
     "build": "tsc",
