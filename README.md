@@ -10,3 +10,13 @@ as needed.
 ```sh
 $ npm install --save @risk3sixty/extension-sdk
 ```
+
+## API
+
+## Development
+
+### Test Server
+
+```sh
+$ npx phalanxSdkTestServer
+```

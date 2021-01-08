@@ -19,6 +19,7 @@ exports.default = {
      */
     async uploadFile(binaryData, name) {
         assert_1.default(this.uploadEndpoint, 'upload endpoint is not available');
+        assert_1.default(this.phalanxApiKey, 'Phalanx API key is not available');
         const form = new form_data_1.default();
         form.append(`file`, binaryData, name);
         const { data } = await axios_1.default.post(this.uploadEndpoint, form, {
