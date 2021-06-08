@@ -8,6 +8,7 @@ export default {
   userId: process.env.R3S_USER_ID,
   phalanxApiKey: process.env.R3S_API_KEY,
   executionId: process.env.R3S_EXECUTION_ID,
+  tabularEndpoint: process.env.R3S_EXECUTION_TABULAR_ENDPOINT,
   uploadEndpoint: process.env.R3S_EXECUTION_UPLOAD_ENDPOINT,
 
   /**
@@ -31,6 +32,22 @@ export default {
         ['x-r3s-key']: this.phalanxApiKey,
       },
     })
+    return data
+  },
+
+  async addExecutionTabularRows(rowsCols: IRowCol[]) {
+    assert(this.tabularEndpoint, 'upload endpoint is not available')
+    assert(this.phalanxApiKey, 'Phalanx API key is not available')
+
+    const { data } = await axios.post(
+      this.tabularEndpoint,
+      { data: rowsCols },
+      {
+        headers: {
+          ['x-r3s-key']: this.phalanxApiKey,
+        },
+      }
+    )
     return data
   },
 }

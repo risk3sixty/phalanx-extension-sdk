@@ -11,6 +11,7 @@ exports.default = {
     userId: process.env.R3S_USER_ID,
     phalanxApiKey: process.env.R3S_API_KEY,
     executionId: process.env.R3S_EXECUTION_ID,
+    tabularEndpoint: process.env.R3S_EXECUTION_TABULAR_ENDPOINT,
     uploadEndpoint: process.env.R3S_EXECUTION_UPLOAD_ENDPOINT,
     /**
      * uploadFile
@@ -25,6 +26,16 @@ exports.default = {
         const { data } = await axios_1.default.post(this.uploadEndpoint, form, {
             headers: {
                 ...form.getHeaders(),
+                ['x-r3s-key']: this.phalanxApiKey,
+            },
+        });
+        return data;
+    },
+    async addExecutionTabularRows(rowsCols) {
+        assert_1.default(this.tabularEndpoint, 'upload endpoint is not available');
+        assert_1.default(this.phalanxApiKey, 'Phalanx API key is not available');
+        const { data } = await axios_1.default.post(this.tabularEndpoint, { data: rowsCols }, {
+            headers: {
                 ['x-r3s-key']: this.phalanxApiKey,
             },
         });
