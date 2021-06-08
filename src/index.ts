@@ -36,7 +36,7 @@ export default {
   },
 
   async addExecutionTabularRows(rowsCols: IRowCol[]) {
-    assert(this.tabularEndpoint, 'upload endpoint is not available')
+    assert(this.tabularEndpoint, 'tabular endpoint is not available')
     assert(this.phalanxApiKey, 'Phalanx API key is not available')
 
     const { data } = await axios.post(
