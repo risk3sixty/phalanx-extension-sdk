@@ -11,7 +11,17 @@ as needed.
 $ npm install --save @risk3sixty/extension-sdk
 ```
 
-## API
+## Example
+
+```
+import R3sSdk from '@risk3sixty/extension-sdk'
+
+// Pass back table of data
+R3sSdk.addExecutionTabularRows(arrayData)
+
+// Upload a file
+R3sSdk.uploadFile(csvData, 'filename.csv')
+```
 
 ## Development
 
