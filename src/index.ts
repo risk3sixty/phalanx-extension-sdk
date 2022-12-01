@@ -10,6 +10,7 @@ export default {
   executionId: process.env.R3S_EXECUTION_ID,
   tabularEndpoint: process.env.R3S_EXECUTION_TABULAR_ENDPOINT,
   uploadEndpoint: process.env.R3S_EXECUTION_UPLOAD_ENDPOINT,
+  processScanEndpoint: process.env.R3S_PROCESS_SCAN_ENDPOINT,
 
   /**
    * uploadFile
@@ -50,4 +51,29 @@ export default {
     )
     return data
   },
+
+  /**
+   * processScan
+   * @param type type of scan performed
+   * @param filename filename of scan results
+   */
+  async processScan(type: String, filename: String) {
+    assert(this.processScanEndpoint, 'process scan endpoint is not available')
+    assert(this.phalanxApiKey, 'Phalanx API key is not available')
+
+    const { data } = await axios.post(
+      this.processScanEndpoint,
+      { 
+        type: type, 
+        filename: filename, 
+        teamId: this.organizationId 
+      },
+      {
+        headers: {
+          ['x-r3s-key']: this.phalanxApiKey,
+        },
+      }
+    )
+    return data
+  }
 }

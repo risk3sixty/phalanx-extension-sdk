@@ -13,6 +13,7 @@ exports.default = {
     executionId: process.env.R3S_EXECUTION_ID,
     tabularEndpoint: process.env.R3S_EXECUTION_TABULAR_ENDPOINT,
     uploadEndpoint: process.env.R3S_EXECUTION_UPLOAD_ENDPOINT,
+    processScanEndpoint: process.env.R3S_PROCESS_SCAN_ENDPOINT,
     /**
      * uploadFile
      * @param binaryData data to pass as a file
@@ -32,7 +33,7 @@ exports.default = {
         return data;
     },
     async addExecutionTabularRows(rowsCols) {
-        assert_1.default(this.tabularEndpoint, 'upload endpoint is not available');
+        assert_1.default(this.tabularEndpoint, 'tabular endpoint is not available');
         assert_1.default(this.phalanxApiKey, 'Phalanx API key is not available');
         const { data } = await axios_1.default.post(this.tabularEndpoint, { data: rowsCols }, {
             headers: {
@@ -41,4 +42,23 @@ exports.default = {
         });
         return data;
     },
+    /**
+     * processScan
+     * @param type type of scan performed
+     * @param filename filename of scan results
+     */
+    async processScan(type, filename) {
+        assert_1.default(this.processScanEndpoint, 'process scan endpoint is not available');
+        assert_1.default(this.phalanxApiKey, 'Phalanx API key is not available');
+        const { data } = await axios_1.default.post(this.processScanEndpoint, {
+            type: type,
+            filename: filename,
+            teamId: this.organizationId
+        }, {
+            headers: {
+                ['x-r3s-key']: this.phalanxApiKey,
+            },
+        });
+        return data;
+    }
 };
