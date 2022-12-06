@@ -12,7 +12,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "prepublish": "npm run build"
+    "prepack": "npm run build"
   },
   "author": "Lance Whatley",
   "license": "MIT",
