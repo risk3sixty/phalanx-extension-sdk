@@ -10,7 +10,7 @@ export default {
   executionId: process.env.R3S_EXECUTION_ID,
   tabularEndpoint: process.env.R3S_EXECUTION_TABULAR_ENDPOINT,
   uploadEndpoint: process.env.R3S_EXECUTION_UPLOAD_ENDPOINT,
-  processScanEndpoint: process.env.R3S_PROCESS_SCAN_ENDPOINT,
+  processScanEndpoint: process.env.R3S_EXECUTION_PROCESS_SCAN_ENDPOINT,
 
   /**
    * uploadFile
