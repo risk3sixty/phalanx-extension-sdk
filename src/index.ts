@@ -55,9 +55,9 @@ export default {
   /**
    * processScan
    * @param type type of scan performed
-   * @param filename filename of scan results
+   * @param uploadId upload id from file_uploads table of scan results
    */
-  async processScan(type: String, filename: String) {
+  async processScan(type: String, uploadId: String) {
     assert(this.processScanEndpoint, 'process scan endpoint is not available')
     assert(this.phalanxApiKey, 'Phalanx API key is not available')
 
@@ -65,7 +65,7 @@ export default {
       this.processScanEndpoint,
       { 
         type: type, 
-        filename: filename, 
+        uploadId: uploadId, 
         teamId: this.organizationId 
       },
       {
