@@ -45,14 +45,14 @@ exports.default = {
     /**
      * processScan
      * @param type type of scan performed
-     * @param filename filename of scan results
+     * @param uploadId upload id from file_uploads table of scan results
      */
-    async processScan(type, filename) {
+    async processScan(type, uploadId) {
         assert_1.default(this.processScanEndpoint, 'process scan endpoint is not available');
         assert_1.default(this.phalanxApiKey, 'Phalanx API key is not available');
         const { data } = await axios_1.default.post(this.processScanEndpoint, {
             type: type,
-            filename: filename,
+            uploadId: uploadId,
             teamId: this.organizationId
         }, {
             headers: {

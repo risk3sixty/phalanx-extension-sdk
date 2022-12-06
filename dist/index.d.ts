@@ -18,8 +18,8 @@ declare const _default: {
     /**
      * processScan
      * @param type type of scan performed
-     * @param filename filename of scan results
+     * @param uploadId upload id from file_uploads table of scan results
      */
-    processScan(type: String, filename: String): Promise<any>;
+    processScan(type: String, uploadId: String): Promise<any>;
 };
 export default _default;
