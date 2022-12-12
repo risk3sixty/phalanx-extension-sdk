@@ -65,7 +65,8 @@ export default {
       this.processScanEndpoint,
       { 
         type: type, 
-        uploadId: uploadId, 
+        uploadId: uploadId,
+        executionId: executionId,
         teamId: this.organizationId 
       },
       {
