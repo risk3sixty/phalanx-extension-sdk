@@ -10,7 +10,7 @@ export default {
   executionId: process.env.R3S_EXECUTION_ID,
   tabularEndpoint: process.env.R3S_EXECUTION_TABULAR_ENDPOINT,
   uploadEndpoint: process.env.R3S_EXECUTION_UPLOAD_ENDPOINT,
-  processScanEndpoint: process.env.R3S_EXECUTION_PROCESS_SCAN_ENDPOINT,
+  processResultsEndpoint: process.env.R3S_EXECUTION_PROCESS_RESULTS_ENDPOINT,
 
   /**
    * uploadFile
@@ -53,16 +53,16 @@ export default {
   },
 
   /**
-   * processScan
-   * @param type type of scan performed
-   * @param uploadId upload id from file_uploads table of scan results
+   * processExecutionResults
+   * @param type type of execution results
+   * @param uploadId upload id from file_uploads table of execution results
    */
-  async processScan(type: String, uploadId: String) {
-    assert(this.processScanEndpoint, 'process scan endpoint is not available')
+  async processExecutionResults(type: String, uploadId: String) {
+    assert(this.processResultsEndpoint, 'process results endpoint is not available')
     assert(this.phalanxApiKey, 'Phalanx API key is not available')
 
     const { data } = await axios.post(
-      this.processScanEndpoint,
+      this.processResultsEndpoint,
       { 
         type: type, 
         uploadId: uploadId,
