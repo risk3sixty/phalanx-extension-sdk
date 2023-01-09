@@ -66,7 +66,7 @@ export default {
       { 
         type: type, 
         uploadId: uploadId,
-        executionId: executionId,
+        executionId: this.executionId,
         teamId: this.organizationId 
       },
       {
