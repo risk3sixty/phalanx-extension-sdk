@@ -10,6 +10,7 @@ export default {
   executionId: process.env.R3S_EXECUTION_ID,
   tabularEndpoint: process.env.R3S_EXECUTION_TABULAR_ENDPOINT,
   uploadEndpoint: process.env.R3S_EXECUTION_UPLOAD_ENDPOINT,
+  processResultsEndpoint: process.env.R3S_EXECUTION_PROCESS_RESULTS_ENDPOINT,
 
   /**
    * uploadFile
@@ -50,4 +51,30 @@ export default {
     )
     return data
   },
+
+  /**
+   * processExecutionResults
+   * @param type type of execution results
+   * @param uploadId upload id from file_uploads table of execution results
+   */
+  async processExecutionResults(type: String, uploadId: String) {
+    assert(this.processResultsEndpoint, 'process results endpoint is not available')
+    assert(this.phalanxApiKey, 'Phalanx API key is not available')
+
+    const { data } = await axios.post(
+      this.processResultsEndpoint,
+      { 
+        type: type, 
+        uploadId: uploadId,
+        executionId: this.executionId,
+        teamId: this.organizationId 
+      },
+      {
+        headers: {
+          ['x-r3s-key']: this.phalanxApiKey,
+        },
+      }
+    )
+    return data
+  }
 }
