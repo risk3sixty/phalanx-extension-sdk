@@ -21,11 +21,13 @@ export default {
     binaryData: Buffer | Readable | string,
     name?: string
   ): Promise<StringMap> {
-    assert(this.uploadEndpoint, 'upload endpoint is not available')
+    assert(this.uploadEndpoint, 'Upload endpoint is not available')
     assert(this.phalanxApiKey, 'Phalanx API key is not available')
+    assert(this.organizationId, 'Organiztion ID is not available')
 
     const form = new FormData()
     form.append(`file`, binaryData, name)
+    form.append(`teamId`, this.organizationId)
 
     const { data } = await axios.post(this.uploadEndpoint, form, {
       headers: {
@@ -37,12 +39,16 @@ export default {
   },
 
   async addExecutionTabularRows(rowsCols: IRowCol[]) {
-    assert(this.tabularEndpoint, 'tabular endpoint is not available')
+    assert(this.tabularEndpoint, 'Tabular endpoint is not available')
     assert(this.phalanxApiKey, 'Phalanx API key is not available')
+    assert(this.organizationId, 'Organiztion ID is not available')
 
     const { data } = await axios.post(
       this.tabularEndpoint,
-      { data: rowsCols },
+      { 
+        teamId: this.organizationId, 
+        data: rowsCols
+      },
       {
         headers: {
           ['x-r3s-key']: this.phalanxApiKey,
@@ -58,16 +64,17 @@ export default {
    * @param uploadId upload id from file_uploads table of execution results
    */
   async processExecutionResults(type: String, uploadId: String) {
-    assert(this.processResultsEndpoint, 'process results endpoint is not available')
+    assert(this.processResultsEndpoint, 'Process results endpoint is not available')
     assert(this.phalanxApiKey, 'Phalanx API key is not available')
+    assert(this.organizationId, 'Organiztion ID is not available')
 
     const { data } = await axios.post(
       this.processResultsEndpoint,
       { 
-        type: type, 
-        uploadId: uploadId,
+        teamId: this.organizationId,
         executionId: this.executionId,
-        teamId: this.organizationId 
+        uploadId: uploadId,
+        type: type, 
       },
       {
         headers: {
