@@ -20,7 +20,7 @@ app.post(`/extension/upload/*`, async function(
 ) {
   const [
     { name: fileName, /* size,*/ path: filePath /*, type*/ },
-  ] = Object.values(req.files)
+  ]: any = Object.values(req.files)
 
   if (!path) return res.status(400).json({ error: `No file uploaded` })
 
