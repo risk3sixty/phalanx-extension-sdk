@@ -34,6 +34,8 @@ export default {
         ...form.getHeaders(),
         ['x-r3s-key']: this.phalanxApiKey,
       },
+      maxContentLength: Infinity,
+      maxBodyLength: Infinity,
     })
     return data
   },
@@ -53,6 +55,8 @@ export default {
         headers: {
           ['x-r3s-key']: this.phalanxApiKey,
         },
+        maxContentLength: Infinity,
+        maxBodyLength: Infinity,
       }
     )
     return data
@@ -80,6 +84,8 @@ export default {
         headers: {
           ['x-r3s-key']: this.phalanxApiKey,
         },
+        maxContentLength: Infinity,
+        maxBodyLength: Infinity,
       }
     )
     return data
