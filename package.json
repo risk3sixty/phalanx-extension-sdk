@@ -1,11 +1,11 @@
 {
   "name": "@risk3sixty/extension-sdk",
-  "version": "1.0.1",
-  "description": "Phalanx automation extension SDK",
+  "version": "1.0.2",
+  "description": "fullCircle automation extension SDK",
   "main": "dist/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Risk3sixty-Labs/phalanx-extension-sdk"
+    "url": "https://github.com/risk3sixty/phalanx-extension-sdk"
   },
   "bin": {
     "phalanxSdkTestServer": "./dist/bin/testServer.js"
