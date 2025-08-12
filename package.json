@@ -17,7 +17,7 @@
   "author": "Lance Whatley",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.21.0",
+    "axios": "^0.30.0",
     "form-data": "^3.0.0"
   },
   "devDependencies": {
